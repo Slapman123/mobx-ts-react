@@ -1,0 +1,19 @@
+.home_component{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+    width:100%;
+    height: 100vh;
+    background-color: antiquewhite;
+    label{
+        color: red;
+    }
+    button {
+        width: 20%;
+        height: 10%;
+        margin-top:20px;
+        color: white;
+        background-color: black;
+    }
+}
