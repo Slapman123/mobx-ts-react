@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 263 307" width="263" height="307">
+	<title>New Project</title>
+	<defs>
+		<image  width="263" height="307" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQcAAAEzAQMAAAAGjlRfAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAAzaIfLSlvQgAAAAJ0Uk5TAP9bkSK1AAABP0lEQVR4nO3VvQ3CQAyG4SCKlBmBURiNjJZRMgIlBeKoyB2SrQ9bxvL9pH6rPPJ300R+l/T5XnQwXWFxO4qnujiC9NAWp1zc6eKci11bzLnYtMWSi1VbZLhEBz/ABaHFcC3RYrgotBCuJVqfm7SgxXAN0Y65lRYutGNupYUL7ZhbaeFDC+Gi0NYztxa0GC4IbT1z29VLWs/c9vWSQriWaMfcCovxkn5/GK4h2jG30sKFdsyttPChhXBRaOuZWwtaDBeEtp657eolrWdu+3pJIVwU2hkWi6TY6OICi/zTOfyioIOCBRccbUJF8dMZfFwULAx+UTC0s6TY6QLTYriiWOnChxbCGdNiuD/S+tykBS2Gs6VV36QFrc9Nus8tU0ho1TdpQdvo3DKFiJYOAr6k9cwtU4hoV7rwoYVw+CZx8Qab5sIS++TcewAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Background" href="#img1" x="0" y="0" />
+</svg>

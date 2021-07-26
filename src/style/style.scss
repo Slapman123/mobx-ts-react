@@ -1,20 +1,9 @@
-@import "views";
+@import "general";
 @import "colors";
 @import "fonts";
+@import "responsive";
 @import "components";
+@import "views";
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  button, input {
-    outline: none;
-  }
-  a {
-    color: inherit;
-    margin: 0;
-    text-decoration: none;
-  }
-  
+
+

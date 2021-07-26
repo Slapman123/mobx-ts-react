@@ -1,0 +1,43 @@
+.modal{
+    width: 100%;
+    padding: 20px 0;
+    display: block;
+    .modal-info{
+        display: none;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        transform: translateX(-100%);
+        h3{
+            font-family: roboto-m,sans-serif;
+            font-size: 18px;
+            color: $text-default;
+            margin-bottom: 5px;
+        }
+        hr{
+            width: 20%;
+            border-color: $primary;
+            height: 2px;
+            margin-bottom: 16px;
+        }
+        p{
+            margin-bottom: 16px;
+        }
+        strong{
+            margin-bottom: 10px;
+        }
+    }
+    .active{
+        animation: showing 400ms ease-in forwards;
+        display: block;
+    }
+    @keyframes showing {
+        0%{
+            transform: translateX(-100%);
+        }
+        100% {
+            
+            transform: translateX(0);
+        }
+    }
+}

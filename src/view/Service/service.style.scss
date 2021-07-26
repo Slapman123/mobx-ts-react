@@ -1,0 +1,29 @@
+.title-holder{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 150px;
+    position: relative;
+    h1{
+        font-family: chainprinter,sans-serif;
+        font-size: 36px;
+        z-index: 0;
+        font-weight: bold;
+    }
+    img{
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+    }
+}
+.service-list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}

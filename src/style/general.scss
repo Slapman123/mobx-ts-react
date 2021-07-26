@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+//overide input[type=search]
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+input,a,button,Link,select,option{
+    cursor:pointer;
+}
+.container{
+    width: 100%;
+    max-width: 1360px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+.App{
+    position: relative;
+}
+.col{
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 120px;
+    position: relative;
+    z-index: 0;
+}
+p,a,div,strong{
+    font-size: 14px;
+    font-family: roboto-m;
+    line-height: 18px;
+}
+h1,h2,h3,h4{
+    line-height: 24px;
+}
+li{
+    font-family: roboto-m;
+}

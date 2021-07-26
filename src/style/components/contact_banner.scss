@@ -1,0 +1,37 @@
+.contact-banner{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    background-color: $primary;
+    list-style-type: none;
+    z-index: 999;
+    i{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        color: #fff;
+        li{
+            margin-left: 5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            a{
+                text-decoration: none;
+                color: #fff;
+                margin-left: 5px;
+            }
+            a:hover{
+                color: #333;
+            }
+        }
+    }
+    i:nth-child(2){
+        margin-left: 20px;
+    }
+}
