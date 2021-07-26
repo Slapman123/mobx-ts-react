@@ -1,5 +1,4 @@
 import {action} from "mobx";
-import axios from "axios";
 
 export const initAppAPI = (state) => {
     const {actions} = state;
@@ -13,5 +12,8 @@ export const initAppAPI = (state) => {
         handleChange: action("handleChange", (e) => {
             state.app[e.target.name] = e.target.value;
         }),
+        handleToken: action('handleToken', (token)=>{
+            state.app.loggedUser = token;
+        })
     }
 }

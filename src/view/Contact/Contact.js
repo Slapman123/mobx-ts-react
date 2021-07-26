@@ -8,6 +8,9 @@ import facebook from "../../assets/icon/facebook (1).svg";
 import linkedin from "../../assets/icon/linkedin.svg";
 
 const Contact = () => {
+  const onSubmit = () =>{
+    
+  }
   return (
     <div>
       <div className='col'>
@@ -15,7 +18,7 @@ const Contact = () => {
             <img id="background" src={background}/>
             <img id="banner" src={banner}/>
             <div className="contact-form">
-                <form>
+                <form id="contact-from" onSubmit={onSubmit}>
                     <label><span>Ime</span><input placeholder="Ime" type="text" required/></label>
                     <label><span>Prezime</span><input placeholder="Prezime" type="text" required/></label>
                     <label><span>Ime Firme</span><input placeholder="Ime firme" type="text"/></label>

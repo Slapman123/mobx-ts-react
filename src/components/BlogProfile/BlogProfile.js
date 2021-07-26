@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {useParams} from "react-router-dom";
 import { setup } from "../../utils/setup";
-import team from "../../assets/images/dokumentacija.jpg";
 import useFetch from "../../utils/useFetch";
-import ReactMarkdown from "react-markdown"
+import ReactMarkdown from "react-markdown";
 import Loading from '../Loader/Loading';
 import Errors from "../Error/Error";
 

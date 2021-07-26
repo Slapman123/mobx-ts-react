@@ -7,6 +7,7 @@ export const initAppState = (state) => {
         app:{
             testValue:40,
             inputValue: "aca",
+            loggedUser: null
         }
     });
     extendObservable(helpers, {
@@ -17,6 +18,9 @@ export const initAppState = (state) => {
             get inputValue() {
                 return state.app.inputValue;
             },
+            get loggedUser() {
+                return state.app.loggedUser;
+            }
         }
     })
 }
