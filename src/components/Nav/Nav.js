@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link,NavLink} from "react-router-dom";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
 import logo from "../../assets/icon/logo2.png";
@@ -8,9 +8,11 @@ import users from "../../assets/icon/profile-user.svg";
 import instagram from "../../assets/icon/instagram (1).svg";
 import facebook from "../../assets/icon/facebook (1).svg";
 import menu from "../../assets/icon/square.svg";
+import sr from "../../assets/icon/serbia.svg";
+import en from "../../assets/icon/great-britain.svg";
 
-const Nav = ()=>{
-    const navLinks = ["home","news","service","blog","who we are","contact"]
+const Nav = ({actions,helpers})=>{
+    const navLinks = ["home","radionice","service","blog","who we are","contact"]
     return(
         <nav>
             <div className="logo">
@@ -27,21 +29,31 @@ const Nav = ()=>{
                 </div>
                 <ul>
                     {
-                        navLinks.map((link,i)=><Link to={`/${link}`} key={i}>{link}</Link>)
+                        navLinks.map((link,i)=><NavLink activeClassName='active-link' to={`/${link}`} key={i}>{link}</NavLink>)
                     }
                 </ul>          
             </div>
             <div className="login">
-                <div className="log-sing-holder">
-                    <img src={users}/>
-                    <Link to="/registration">Log In</Link>
+                {
+                     window.localStorage.getItem('username')? 
+                    <Link to="#" className="wellcome">{helpers.app.utils.nav_wellcome} <p>{window.localStorage.getItem('username')}</p></Link>
+                    :
+                    <div className="log-sing-holder">
+                        <img src={users}/>
+                        <Link to="/registration">Log In</Link>
+                    </div>
+                }
+                <div className="localization">
+                    {
+                        helpers.app.localization==="sr-Latn"?<img src={sr}/>:<img src={en}/>
+                    }
+                    <select name="language" id="language" onChange={(e)=>{actions.app.setLocalization(e.target.value)}}>
+                        <option value="sr-Latn">SR</option>
+                        <option value="en">EN</option>
+                    </select>
                 </div>
-                <select name="language" id="language">
-                    <option value="en">En</option>
-                    <option value="sr">Sr</option>
-                </select>
             </div>
-            <div className="hamburger">
+            <div className="hamburger" onClick={()=>actions.app.setMobileMenu(!helpers.app.mobilemenu)}>
                 <img src={menu}/>
             </div>
         </nav>

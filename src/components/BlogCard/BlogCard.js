@@ -3,19 +3,19 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
 
-const  BlogCard = ({data})=>{
+const  BlogCard = ({data,helpers})=>{
     return(
         <div className="blog-card">
             <div className="image-wrapper">
                 <img src={`http://localhost:1337${data.cover[0].url}`}/>
                 {
-                    data.isnew?<div className="date"><p>Novo</p></div>:''
+                    data.isnew?<div className="date"><p>{helpers.app.utils.NovoMark}</p></div>:''
                 }
             </div>
             <div className="blog-card-info">
                 <h2>{data.Title}</h2>
                 <p>{data.about}</p>
-                <Link to={`/blog/${data.id}`} className="btn">Procitaj Vise</Link>
+                <Link to={`/blog/${data.id}`} className="btn">{helpers.app.utils.button_3}</Link>
             </div>
         </div> 
     )

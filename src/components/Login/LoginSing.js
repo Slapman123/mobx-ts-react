@@ -1,18 +1,18 @@
 import React,{useState} from "react";
-import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
 import loggs from "../../assets/images/undraw_Login_re_4vu2.svg";
 import axios from "axios";
 
-const LoginSing = () => {
+const LoginSing = ({actions}) => {
   const [selected, setSelected] = useState(0)
   const [emailL, setEmailL] = useState()
   const [passL, setPassL] = useState()
   const [userS, setUserS] = useState()
   const [mailS, setMailS] = useState()
   const [passS, setPassS] = useState()
-
+  const goTo = useHistory();
   //toggle
   const onLogin = () => {
     setSelected(1)
@@ -23,33 +23,32 @@ const LoginSing = () => {
   //submit
   const onLoginS =(e)=>{
     e.preventDefault()
-    console.log(emailL);
-    console.log(passL)
+    actions.app.setLoading(true)
     axios.post('http://localhost:1337/auth/local',{
       identifier: emailL,
       password: passL
     }).then((data)=>{
-      console.log(data)
+      window.localStorage.setItem("username", data.data.user.username);
+      window.localStorage.setItem("jwt", data.data.jwt);
+      actions.app.setLoading(false)
+      goTo.push('/');
     }).catch(e=>{
       console.log(e)
     })
   }
   const onSingS =(e)=>{
     e.preventDefault()
+    actions.app.setLoading(true)
     axios.post('http://localhost:1337/auth/local/register',{
       username: userS,
       email: mailS,
       password: passS,
       role: 'Reader'
     }).then((data)=>{
-      axios.post('http://localhost:1337/auth/local',{
-      identifier: mailS,
-      password: passS
-    }).then((data)=>{
-      console.log(data)
-    }).catch(e=>{
-      console.log(e)
-    })
+      window.localStorage.setItem("username", data.data.user.username);
+      window.localStorage.setItem("jwt", data.data.jwt);
+      actions.app.setLoading(false)
+      goTo.push('/');
     }).catch(e=>{
       console.log(e)
     })

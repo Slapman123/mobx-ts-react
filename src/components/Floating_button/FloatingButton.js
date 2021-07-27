@@ -1,18 +1,14 @@
-import React,{useState} from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
 import svg from "../../assets/icon/chevron-upwards-arrow.svg"
 
-const  FloatingButton = ()=>{
+const  FloatingButton = ({helpers})=>{
     const goToTop = () =>{
         window.scrollTo(0,0,'smooth')
     };
-    const [scrollData,setScrollData] = useState(0);
-    window.onscroll = function(){
-        setScrollData(window.scrollY)
-    }
     return(
-        <div className={`floating-button ${scrollData>200?"showedBtn":""}`} onClick={goToTop}>
+        <div className={`floating-button ${helpers.app.scrollData>200?"showedBtn":""}`} onClick={goToTop}>
                 <img src={svg}/>
         </div>
     )

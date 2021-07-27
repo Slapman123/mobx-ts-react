@@ -6,8 +6,8 @@ import logo from "../../assets/icon/android-chrome-w.png";
 import instagram from "../../assets/icon/instagram.svg";
 import facebook from "../../assets/icon/facebook.svg";
 
-const Footer = ()=>{
-    const navLinks = ["home","news","service","blog","who we are","contact"]
+const Footer = ({helpers})=>{
+    const navLinks = ["home","radionice","service","blog","who we are","contact"]
     return(
         <footer>
             <div className='col'>
@@ -19,7 +19,7 @@ const Footer = ()=>{
                 </div>
             </div>
                 <ul className="addresses">
-                    <li>Informacije o firmi</li>
+                    <li>{helpers.app.utils.infoOfFactor}</li>
                     <li>Branimira Ćosića 25</li>
                     <li>Novi Sad</li>
                     <li>Srbija</li>
@@ -30,12 +30,12 @@ const Footer = ()=>{
                     }
                 </ul>
                 <ul className="contact-info">
-                    <li>Telefon : <a href="tel:00631455668">+381 63 14 55 668</a></li>
-                    <li>Mail : <a href="mailto:office@hrfactor.rs">office@hrfactor.rs</a></li>
+                    <li>{helpers.app.utils.tel} : <a href="tel:00631455668">+381 63 14 55 668</a></li>
+                    <li>{helpers.app.utils.mailf} : <a href="mailto:office@hrfactor.rs">office@hrfactor.rs</a></li>
                 </ul>
                 <div className="who-we-are">
-                    <Link to="#">Ko smo mi</Link>
-                    <p>Mi smo HR Factor, agencija koja posluje u oblasti menadžmenta ljudskih resursa.Naše usluge pomažu Vam pri pronalaženju pravih ljudi za Vašu organizaciju, kao i njihovom razvoju na profesionalnom putu.</p>
+                    <Link to="/who we are">{helpers.app.utils.footer_title}</Link>
+                    <p>{helpers.app.utils.fotter_desc}</p>
                 </div>
             </div>
         </footer>

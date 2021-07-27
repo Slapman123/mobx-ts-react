@@ -6,15 +6,21 @@ import { setup } from "../../utils/setup";
 import banner from "../../assets/icon/banner.svg";
 import ReactMarkdown from "react-markdown";
 import useFetch from '../../utils/useFetch';
-import Loading from "../../components/Loader/Loading";
-import Errors from "../../components/Error/Error";
-const  TeamCard = ()=>{
-    const {id} = useParams();
-    const {loading, error, data} = useFetch(`http://localhost:1337/who-we-ares/${id}`);
 
-    if(loading) return <Loading/>;
-    if(error) return <Errors/>;
-    
+const  TeamCard = ({actions,helpers})=>{
+    const {id} = useParams();
+    const {loading, error, data} = useFetch(`http://localhost:1337/who-we-ares/${id}?_locale=${helpers.app.localization}`);
+
+    if(loading){
+        actions.app.setLoading(loading)
+      };
+      if(error){
+        actions.app.setError(error)
+      }
+      if(data) {
+        actions.app.setLoading(false)
+        actions.app.setError(false)
+      } 
     let imageUrl = "";
     if(data.TeamImage){
         imageUrl = data.TeamImage[0].url;

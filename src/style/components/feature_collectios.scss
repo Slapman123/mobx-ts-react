@@ -10,6 +10,9 @@
         justify-content: center;
         flex-direction: column;
         width: 40%;
+        @media (max-width: $small){
+            width: 100%;
+        };
         h2{
             font-family: roboto-m,sans-serif;
             font-size: 24px;
@@ -29,6 +32,9 @@
         justify-content: center;
         flex-direction: column;
         width: 40%;
+        @media (max-width: $small){
+            width: 100%;
+        };
         h2{
             font-family: roboto-m,sans-serif;
             font-size: 24px;
@@ -58,11 +64,21 @@
     }
     img{
         width: 50%;
+        @media (max-width: $small){
+            width: 100%;
+            margin: 20px 0;
+        };
     }
 }
 .normal {
     flex-direction: row;
+    @media (max-width: $small){
+        flex-direction: column;
+    };
 }
 .reverse{
     flex-direction: row-reverse;
+    @media (max-width: $small){
+        flex-direction: column-reverse;
+    };
 }

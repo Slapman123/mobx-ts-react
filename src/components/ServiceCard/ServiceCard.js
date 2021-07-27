@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
 import img from "../../assets/images/dokumentacija.jpg";
 
-const ServiceCard = ({poda})=>{
+const ServiceCard = ({poda,helpers})=>{
     return(
         <div className="service-card">
             <div className="image-wrapper">
@@ -13,7 +13,7 @@ const ServiceCard = ({poda})=>{
             <div className="service-info">
                 <h2>{poda.title}</h2>
                 <p>{poda.CardText}</p>
-                <Link to={`/service/${poda.id}`} className="btn">Saznajte Vise</Link>
+                <Link to={`/service/${poda.id}`} className="btn">{helpers.app.utils.button_1}</Link>
             </div>
         </div>
     )

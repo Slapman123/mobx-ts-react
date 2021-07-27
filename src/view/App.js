@@ -1,9 +1,8 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "../style/style.scss"
 import PropTypes from "prop-types";
 import { setup } from "../utils/setup";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Nav from "../components/Nav/Nav";
 import Footer from "../components/Footer/Footer";
 import Home from "./Home/Home";
 import Contact from "./Contact/Contact";
@@ -11,25 +10,40 @@ import WhoWeAre from "./WhoWeAre/WhoWeAre";
 import Service from "./Service/Service";
 import ServiceProfile from "../components/ServiceProfile/ServiceProfile";
 import News from "./News/News";
-import ContactBanner from "../components/Contact_banner/ContactBanner";
 import NewsProfile from "../components/NewsProfile/NewsProfile";
 import Blogs from "./Blogs/Blogs";
 import BlogProfile from "../components/BlogProfile/BlogProfile";
 import LoginSing from "../components/Login/LoginSing";
 import FloatingButton from "../components/Floating_button/FloatingButton";
 import TeamProfile from "../components/TeamProfile/TeamProfile";
-function App({}) {
-  
+import Page404 from "./Page404/Page404";
+import Header from "../components/Header/Header";
+import Upcoming from "../components/Upcoming/Upcoming";
+import Loading from "../components/Loader/Loading";
+import Error from "../components/Error/Error";
+import MobileMenu from "../components/MobileMenu/MobileMenu";
+import axios from "axios";
+function App({actions,helpers}) {
+  useEffect(()=>{
+    axios.get(`http://localhost:1337/home-page?_locale=${helpers.app.localization}`).then((data)=>{
+      actions.app.setUtils(data.data);
+      console.log(data.data)
+    })
+  },[helpers.app.localization])
+  /*localStorage.clear();*/
   return (
     <div className="App">
       <Router>
-        <ContactBanner/>
-        <Nav/>
+        <Loading/>
+        <Header/>
+        <Error/>
+        <MobileMenu/>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/home" component={Home} />
-          <Route path="/news/:id" component={NewsProfile}/>
-          <Route path="/news" component={News}/>
+          <Route path="/radionice/:id" component={NewsProfile}/>
+          <Route path="/radionice" component={News}/>
+          <Route path="/upcoming" component={Upcoming}/>
           <Route path="/blog/:id" component={BlogProfile}/>
           <Route path="/registration" component={LoginSing}/>
           <Route path="/blog" component={Blogs}/>
@@ -38,6 +52,7 @@ function App({}) {
           <Route path="/contact" component={Contact}/>
           <Route path="/who we are" component={WhoWeAre}/>
           <Route path="/team/:id" component={TeamProfile}/>
+          <Route path="*" component={Page404}/>
         </Switch>
         <Footer/>
         <FloatingButton/>

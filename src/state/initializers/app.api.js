@@ -12,8 +12,23 @@ export const initAppAPI = (state) => {
         handleChange: action("handleChange", (e) => {
             state.app[e.target.name] = e.target.value;
         }),
-        handleToken: action('handleToken', (token)=>{
-            state.app.loggedUser = token;
+        setScrollData: action('setScrollData',(data)=>{
+            state.app.scrollData = data
+        }),
+        setLoading: action("setLoading",(data)=>{
+            state.app.loading = data
+        }),
+        setError: action("setError",(data)=>{
+            state.app.eroor = data
+        }),
+        setMobileMenu: action("setMobileMenu",(data)=>{
+            state.app.mobilemenu = data
+        }),
+        setLocalization: action('setLocalization',(data)=>{
+            state.app.localization = data
+        }),
+        setUtils: action('setUtils',(data)=>{
+            state.app.utils = data
         })
     }
 }

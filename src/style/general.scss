@@ -32,6 +32,9 @@ input,a,button,Link,select,option{
     padding: 0 120px;
     position: relative;
     z-index: 0;
+    @media (max-width: $small){
+        padding: 0 20px;
+    }
 }
 p,a,div,strong{
     font-size: 14px;

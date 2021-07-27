@@ -4,15 +4,21 @@ import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
 import useFetch from '../../utils/useFetch';
 import ReactMarkdown from "react-markdown"
-import Loading from '../Loader/Loading';
-import Errors from "../../components/Error/Error";
 
-const  ServiceProfile = ()=>{
+const  ServiceProfile = ({actions,helpers})=>{
     const {id} = useParams();
-    const {loading, error, data} = useFetch(`http://localhost:1337/services/${id}`);
+    const {loading, error, data} = useFetch(`http://localhost:1337/services/${id}?_locale=${helpers.app.localization}`);
 
-    if(loading) return <Loading/>;
-    if(error) return <Errors/>;
+    if(loading){
+        actions.app.setLoading(loading)
+      };
+      if(error){
+        actions.app.setError(error)
+      }
+      if(data) {
+        actions.app.setLoading(false)
+        actions.app.setError(false)
+      } 
         
     return(
         <article>

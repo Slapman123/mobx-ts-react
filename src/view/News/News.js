@@ -1,16 +1,28 @@
 import React,{useState} from "react";
-import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
-import back from "../../assets/images/undraw_newspaper_k72w.svg";
+import back from "../../assets/images/undraw_collaborators_prrw.svg";
 import NewsCard from "../../components/NewsCard/NewsCard";
 
+
+import useFetch from "../../utils/useFetch";
 import Pagination from "react-js-pagination";
+import Anounc from "../../components/Anounc/Anounc";
 
 
-const News = () => {
-  const newsList = [1,1,1,1,1,1,1,1]
+const News = ({actions,helpers}) => {
   const [activePage,setActivePage] = useState(1)
+  const {loading, error, data} = useFetch("http://localhost:1337/f-inishedpros?_locale="+helpers.app.localization);
+  if(loading){
+    actions.app.setLoading(loading)
+  };
+  if(error){
+    actions.app.setError(error)
+  }
+  if(data) {
+    actions.app.setLoading(false)
+    actions.app.setError(false)
+  } 
   const handlePageChange=(pageNumber)=>{
     setActivePage(pageNumber)
   }
@@ -18,11 +30,12 @@ const News = () => {
     <div className="container">
       <div className='col'>
         <div className="news-list-holder">
-            <div className="news-background"><h1>News</h1><img src={back}/></div>
-            <div className="news-list">
+            <div className="news-background"><h1>{helpers.app.utils.RadioniceTitle}</h1><img src={back}/></div>
+            <Anounc/>
+           <div className="news-list">
               {
-               newsList.map((news,i)=>{
-                  return <NewsCard id={i} key={i}/>
+               data.map((news,i)=>{
+                  return <NewsCard data={news} key={i}/>
                })
               }
             </div>
@@ -31,7 +44,7 @@ const News = () => {
             <Pagination
                 activePage={activePage}
                 itemsCountPerPage={5}
-                totalItemsCount={newsList.length}
+                totalItemsCount={data.length}
                 pageRangeDisplayed={5}
                 itemClass="page-item"
                 linkClass="page-link"

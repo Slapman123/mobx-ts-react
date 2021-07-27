@@ -25,10 +25,17 @@
             align-items: center;
             justify-content: space-around;
             flex-direction: row;
+            @media (max-width: $small){
+                flex-direction: column;
+            }
             .card{
                 display: flex;
                 border-radius: 10px;
                 width: 30%;
+                @media (max-width: $small){
+                    width: 100%;
+                    margin-top: 24px;
+                }
                 align-items: center;
                 justify-content: space-between;
                 flex-direction: column;
@@ -55,7 +62,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-top: 55px;
+    padding: 55px 0;
     position: relative;
     .team-meet{
         display: flex;
@@ -78,6 +85,10 @@
         align-items: center;
         justify-content: space-around;
         flex-wrap: wrap;
+        @media (max-width: $small){
+            flex-direction: column;
+            padding: 0 20px;
+        }
         .team-holder{
             display: flex;
             transition: transform .5s ease-in-out;

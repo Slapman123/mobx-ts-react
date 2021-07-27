@@ -6,22 +6,27 @@ import ServiceCard from "../../components/ServiceCard/ServiceCard";
 import background from "../../assets/images/undraw_Customer_survey_re_v9cj.svg";
 
 import useFetch from "../../utils/useFetch";
-import Loading from "../../components/Loader/Loading";
-import Errors from "../../components/Error/Error";
 
-const Service = () => {
+const Service = ({actions,helpers}) => {
   
-  const {loading, error, data} = useFetch("http://localhost:1337/services");
+  const {loading, error, data} = useFetch("http://localhost:1337/services?_locale="+helpers.app.localization);
 
-  if(loading) return <Loading/>;
-  if(error) return <Errors/>;
-
+  if(loading){
+    actions.app.setLoading(loading)
+  };
+  if(error){
+    actions.app.setError(error)
+  }
+  if(data) {
+    actions.app.setLoading(false)
+    actions.app.setError(false)
+  } 
   return (
     <div className="container">
       <div className='col'>
         <div className="title-holder">
           <img src={background}/>
-          <h1>Usluge</h1>
+          <h1>{helpers.app.utils.Usluge}</h1>
         </div>
         <div className="service-list">
             {

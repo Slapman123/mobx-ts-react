@@ -5,6 +5,9 @@
     width: 100%;
     padding: 40px 0;
     flex-wrap: wrap;
+    @media (max-width: $small){
+        flex-direction: column;
+    }
 }
 .blog-logo{
     width: 100%;

@@ -6,7 +6,7 @@ import procces from "../../assets/images/undraw_Processing_re_tbdu.svg";
 import 'font-awesome/css/font-awesome.min.css';
 import Modal from "../Modal/Modal";
 
-const  FeatureCollections = ({normal})=>{
+const  FeatureCollections = ({normal,helpers})=>{
     const [showModal1,setShowModal1] = useState(false);
     const [showModal2,setShowModal2] = useState(false);
     const show1 = () =>{
@@ -21,18 +21,18 @@ const  FeatureCollections = ({normal})=>{
                 {
                     normal? 
                     <div className="feature-info">
-                        <h2>Dizajnirajte i isplanirajte strukturu Vaše organizacije i osigurajte uspešnost poslovanja</h2>
-                        <p>Naše usluge dizajniranja i planiranja poslovne strategije, organizacione strukture, kao i sistematizacije radnih mesta učiniće Vašu organizaciju efikasnijom, sa zagarantovanim napretkom na poslovnom planu.</p>
-                        <button className="btn" onClick={show1}>Saznajte vise</button>
+                        <h2>{helpers.app.utils.section_1_title}</h2>
+                        <p>{helpers.app.utils.section_1_desc}</p>
+                        <button className="btn" onClick={show1}>{helpers.app.utils.button_1}</button>
                     </div> :
                     <div className="feature-info-reverse">
-                        <h2>Odredite i poboljšajte produktivnost Vaših kadrova</h2>
+                        <h2>{helpers.app.utils.section_2_title}</h2>
                         <ul>
-                            <li><i className="fa fa-check"><p>Saznajte kolika je trenutna produktivnost Vaših zaposlenih.</p></i></li>
-                            <li><i className="fa fa-check"><p>Reorganizujte zaposlene i postignite bolji kvalitet rada.</p></i></li>
-                            <li><i className="fa fa-check"><p>Motivišite Vaše zaposlene na putu ka produktivnosti.</p></i></li>
+                            <li><i className="fa fa-check"><p>{helpers.app.utils.section_2_list1}</p></i></li>
+                            <li><i className="fa fa-check"><p>{helpers.app.utils.section_2_list2}</p></i></li>
+                            <li><i className="fa fa-check"><p>{helpers.app.utils.section_2_list3}</p></i></li>
                         </ul>
-                        <button className="btn" onClick={show2}>Saznajte vise</button>
+                        <button className="btn" onClick={show2}>{helpers.app.utils.button_1}</button>
                     </div> 
                 }
                 {

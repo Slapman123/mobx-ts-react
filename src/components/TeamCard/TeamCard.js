@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
 
-const  TeamCard = ({team})=>{
+const  TeamCard = ({team,helpers})=>{
     return(
         <div className="team-holder">
             <div className="team-profile">
@@ -12,7 +12,7 @@ const  TeamCard = ({team})=>{
             </div>
                 <strong>{team.Name}</strong>
                 <p>{team.NameInfo}</p>
-                <Link className="btn-meet" to={`/team/${team.id}`}>Upoznajmo se</Link>
+                <Link className="btn-meet" to={`/team/${team.id}`}>{helpers.app.utils.button_5}</Link>
             </div>
         </div> 
     )

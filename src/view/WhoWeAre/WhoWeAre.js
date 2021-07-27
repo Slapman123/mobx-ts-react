@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
@@ -8,40 +8,52 @@ import img3 from "../../assets/images/undraw_pair_programming_njlp.svg";
 import TeamCard from "../../components/TeamCard/TeamCard";
 
 import useFetch from "../../utils/useFetch";
-import Loading from "../../components/Loader/Loading";
-import Errors from "../../components/Error/Error";
 
-const WhoWeAre = () => {
-  const {loading, error, data} = useFetch("http://localhost:1337/who-we-ares");
+const WhoWeAre = ({actions,helpers}) => {
+  const {loading, error, data} = useFetch("http://localhost:1337/who-we-ares?_locale="+helpers.app.localization);
+  const [isFetched,setFetched] = useState(false)
+  
+  useEffect(()=>{
+    if(data){
+      setFetched(true)
+    }
+  },[data])
 
-  if(loading) return <Loading/>;
-  if(error) return <Errors/>;
+  if(loading){
+    actions.app.setLoading(loading)
+  };
+  if(error){
+    actions.app.setError(error)
+  }
+  if(data) {
+    actions.app.setLoading(false)
+    actions.app.setError(false)
+  } 
     
   return (
-    <div className="container">
       <div className='col'>
         <div className="holder">
           <div className="who-we-are-wrapper">
             <div className="info">
-            <p>Mi smo HR Factor, agencija koja posluje u oblasti menadžmenta ljudskih resursa.</p>
+            <p>{helpers.app.utils.teamTitle}</p>
           </div>
             <div className="who-we-are-holder">
             <div className="card">
               <img src={img1}/>
               <div className="card-text">
-                <p>Naše usluge pomažu Vam pri pronalaženju pravih ljudi za Vašu organizaciju, kao i njihovom razvoju na profesionalnom putu.</p>
+                <p>{helpers.app.utils.teamCard1}</p>
               </div>
             </div>
             <div className="card">
               <img src={img2}/>
               <div className="card-text">
-                <p>Svesni da su LJUDI unutar kompanije ono što razlikuje manje uspešne od više uspešnih kompanija, naš cilj je da Vama i Vašoj organizaciji budemo upravo taj Faktor Koji Pravi Razliku.</p>
+                <p>{helpers.app.utils.teamCard2}</p>
               </div>
             </div>
             <div className="card">
               <img src={img3}/>
               <div className="card-text">
-                <p>Samo kroz saradnju sa nama, omogućićete Vašoj kompaniji dugoročan uspeh koji se postiže kroz kontinuiran rad na razvoju ljudskih resursa.</p>
+                <p>{helpers.app.utils.teamCard3}</p>
               </div>
             </div>
           </div>
@@ -50,19 +62,19 @@ const WhoWeAre = () => {
         <div className="our-team">
           <div className="who-we-are-background"></div>
           <div className="team-meet">
-            <h2>O Našem Timu</h2>
-            <p>Upoznajte naš stučni tim</p>
+            <h2>{helpers.app.utils.teamListTitle}</h2>
+            <p>{helpers.app.utils.teamListSubtitle}</p>
           </div>
           <div className="team-list">
             {
+              isFetched ?
               data.map((team,i)=>{
                 return <TeamCard key={i} team={team}/>
-              })
+              }):null
             } 
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

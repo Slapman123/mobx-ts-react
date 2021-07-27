@@ -9,6 +9,9 @@
     margin: 10px;
     height: 26rem;
     overflow: hidden;
+    @media (max-width: $small){
+        width: 100%;
+    }
     .image-wrapper{
         margin-bottom: 16px;
         box-shadow: 0 5px 10px #333;

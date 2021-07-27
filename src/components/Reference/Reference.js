@@ -5,13 +5,17 @@ import useFetch from "../../utils/useFetch";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Loading from '../Loader/Loading';
 import Errors from "../Error/Error";
 
-const  Reference = ()=>{
+const  Reference = ({actions})=>{
     const {loading, error, data} = useFetch("http://localhost:1337/references");
 
-    if(loading) return <Loading/>;
+    if(loading){
+      actions.app.setLoading(loading)
+    };
+  if(data) {
+      actions.app.setLoading(false)
+    }
     if(error) return <Errors/>;
     const responsive = {
         superLargeDesktop: {
@@ -51,7 +55,7 @@ const  Reference = ()=>{
                             return <div className="slide" key={i}><img src={`http://localhost:1337${logo.logo.url}`}/></div>
                           })
                         }
-                </Carousel>;
+                </Carousel>
                 </div>
             </div>
         </div>
