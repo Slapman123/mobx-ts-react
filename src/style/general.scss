@@ -6,6 +6,16 @@
 html{
     scroll-behavior: smooth;
 }
+html::-webkit-scrollbar-thumb {
+    background-color: #333;
+    outline: 15px solid $primary;
+}
+html::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+html::-webkit-scrollbar {
+    width: 0.5em;
+}
 
 //overide input[type=search]
 input[type="search"]::-webkit-search-decoration,
