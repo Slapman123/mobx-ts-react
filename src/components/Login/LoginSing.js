@@ -28,10 +28,15 @@ const LoginSing = ({actions}) => {
       identifier: emailL,
       password: passL
     }).then((data)=>{
-      window.localStorage.setItem("username", data.data.user.username);
-      window.localStorage.setItem("jwt", data.data.jwt);
+      const user = data.data
+      window.localStorage.setItem("username", user.user.username);
+      window.localStorage.setItem("mail", user.user.email);
+      window.localStorage.setItem("src", user.user.profile.url);
+      window.localStorage.setItem("jwt", user.jwt);
       actions.app.setLoading(false)
+      actions.app.setUserData(user.user.username,user.user.email,user.user.profile.url,user.jwt)
       goTo.push('/');
+      console.log(data)
     }).catch(e=>{
       console.log(e)
     })
@@ -48,6 +53,7 @@ const LoginSing = ({actions}) => {
       window.localStorage.setItem("username", data.data.user.username);
       window.localStorage.setItem("jwt", data.data.jwt);
       actions.app.setLoading(false)
+      actions.app.setUserData(data.data.user.username,data.data.jwt)
       goTo.push('/');
     }).catch(e=>{
       console.log(e)

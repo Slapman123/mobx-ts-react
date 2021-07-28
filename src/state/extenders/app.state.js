@@ -12,7 +12,13 @@ export const initAppState = (state) => {
             error: false,
             mobilemenu: false,
             localization: "sr-Latn",
-            utils:[]
+            utils:[],
+            formA:{
+                username: window.localStorage.getItem('username'),
+                mail: window.localStorage.getItem('mail'),
+                src: window.localStorage.getItem('src'),
+                token: window.localStorage.getItem('jwt'),
+            }
         }
     });
     extendObservable(helpers, {
@@ -40,6 +46,9 @@ export const initAppState = (state) => {
             },
             get utils(){
                 return state.app.utils;
+            },
+            get formA(){
+                return state.app.formA;
             }
         }
     })

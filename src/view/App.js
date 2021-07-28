@@ -23,6 +23,7 @@ import Loading from "../components/Loader/Loading";
 import Error from "../components/Error/Error";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import axios from "axios";
+import UserProfile from "../components/UserProfile/UserProfile";
 function App({actions,helpers}) {
   useEffect(()=>{
     axios.get(`http://localhost:1337/home-page?_locale=${helpers.app.localization}`).then((data)=>{
@@ -30,7 +31,6 @@ function App({actions,helpers}) {
       console.log(data.data)
     })
   },[helpers.app.localization])
-  /*localStorage.clear();*/
   return (
     <div className="App">
       <Router>
@@ -41,8 +41,8 @@ function App({actions,helpers}) {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/home" component={Home} />
-          <Route path="/radionice/:id" component={NewsProfile}/>
-          <Route path="/radionice" component={News}/>
+          <Route path="/workshops/:id" component={NewsProfile}/>
+          <Route path="/workshops" component={News}/>
           <Route path="/upcoming" component={Upcoming}/>
           <Route path="/blog/:id" component={BlogProfile}/>
           <Route path="/registration" component={LoginSing}/>
@@ -52,6 +52,7 @@ function App({actions,helpers}) {
           <Route path="/contact" component={Contact}/>
           <Route path="/who we are" component={WhoWeAre}/>
           <Route path="/team/:id" component={TeamProfile}/>
+          <Route path="/profile" component={UserProfile}/>
           <Route path="*" component={Page404}/>
         </Switch>
         <Footer/>

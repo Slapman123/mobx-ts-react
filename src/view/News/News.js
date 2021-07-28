@@ -1,18 +1,17 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
 import back from "../../assets/images/undraw_collaborators_prrw.svg";
 import NewsCard from "../../components/NewsCard/NewsCard";
-
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import useFetch from "../../utils/useFetch";
-import Pagination from "react-js-pagination";
 import Anounc from "../../components/Anounc/Anounc";
 
 
 const News = ({actions,helpers}) => {
-  const [activePage,setActivePage] = useState(1)
-  const {loading, error, data} = useFetch("http://localhost:1337/f-inishedpros?_locale="+helpers.app.localization);
+  const {loading, error, data} = useFetch(`http://localhost:1337/f-inishedpros?_locale=${helpers.app.localization}&_start=0&_limit=5`);
+  const [page,setPage] = useState(data)
   if(loading){
     actions.app.setLoading(loading)
   };
@@ -22,34 +21,29 @@ const News = ({actions,helpers}) => {
   if(data) {
     actions.app.setLoading(false)
     actions.app.setError(false)
-  } 
-  const handlePageChange=(pageNumber)=>{
-    setActivePage(pageNumber)
   }
+  const getMoreData = async () =>{
+    const res = await fetch(`http://localhost:1337/f-inishedpros?_locale=${helpers.app.localization}&_start=${page.length}&_limit=5`);
+    const newPosts = await res.json()
+    setPage(page=>[...page, ...newPosts])
+  }
+  
   return (
     <div className="container">
       <div className='col'>
         <div className="news-list-holder">
             <div className="news-background"><h1>{helpers.app.utils.RadioniceTitle}</h1><img src={back}/></div>
             <Anounc/>
-           <div className="news-list">
+            <InfiniteScroll 
+              dataLength={data.length} 
+              next={getMoreData}  
+              hasMore={true}>
               {
-               data.map((news,i)=>{
+                page.map((news,i)=>{
                   return <NewsCard data={news} key={i}/>
-               })
+                })
               }
-            </div>
-        </div>
-        <div>
-            <Pagination
-                activePage={activePage}
-                itemsCountPerPage={5}
-                totalItemsCount={data.length}
-                pageRangeDisplayed={5}
-                itemClass="page-item"
-                linkClass="page-link"
-                onChange={handlePageChange}
-            />
+            </InfiniteScroll>
         </div>
       </div>
     </div>

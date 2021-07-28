@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {Link,NavLink} from "react-router-dom";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
@@ -13,6 +13,8 @@ import en from "../../assets/icon/great-britain.svg";
 
 const Nav = ({actions,helpers})=>{
     const navLinks = ["home","radionice","service","blog","who we are","contact"]
+    useEffect(()=>{
+    },[helpers.app.formA])
     return(
         <nav>
             <div className="logo">
@@ -28,15 +30,18 @@ const Nav = ({actions,helpers})=>{
                     <a href="#"><img src={facebook}/></a>
                 </div>
                 <ul>
-                    {
-                        navLinks.map((link,i)=><NavLink activeClassName='active-link' to={`/${link}`} key={i}>{link}</NavLink>)
-                    }
+                    <NavLink activeClassName='active-link' to="/home">{helpers.app.utils.Home}</NavLink>
+                    <NavLink activeClassName='active-link' to="/workshops" >{helpers.app.utils.Workshops}</NavLink>
+                    <NavLink activeClassName='active-link' to="/service" >{helpers.app.utils.Service}</NavLink>
+                    <NavLink activeClassName='active-link' to="/blog" >{helpers.app.utils.Blog}</NavLink>
+                    <NavLink activeClassName='active-link' to="/who we are" >{helpers.app.utils.whoweare}</NavLink>
+                    <NavLink activeClassName='active-link' to="/contact" >{helpers.app.utils.contact}</NavLink>
                 </ul>          
             </div>
             <div className="login">
                 {
-                     window.localStorage.getItem('username')? 
-                    <Link to="#" className="wellcome">{helpers.app.utils.nav_wellcome} <p>{window.localStorage.getItem('username')}</p></Link>
+                     helpers.app.formA.username ? 
+                    <Link to="/profile" className="wellcome">{helpers.app.utils.nav_wellcome} <p>{helpers.app.formA.username}</p></Link>
                     :
                     <div className="log-sing-holder">
                         <img src={users}/>

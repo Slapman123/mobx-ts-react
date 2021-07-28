@@ -24,7 +24,7 @@ const Contact = ({helpers}) => {
                     <label><span>{helpers.app.utils.nameofcomp}</span><input placeholder={helpers.app.utils.nameofcomp} type="text"/></label>
                     <label><span>{helpers.app.utils.numberc}</span><input placeholder={helpers.app.utils.numberc} type="text" /></label>
                     <label><span>{helpers.app.utils.mail}</span><input placeholder={helpers.app.utils.mail} type="email" required/></label>
-                    <textarea placeholder="Pitanje" required></textarea>
+                    <textarea placeholder={helpers.app.utils.enterQuestion} required></textarea>
                     <button className="btn-submit" type="submit">{helpers.app.utils.button_6}</button>
                 </form>
                 <div className="social-maps">

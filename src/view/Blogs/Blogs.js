@@ -19,7 +19,7 @@ const Blogs = ({actions,helpers}) => {
     actions.app.setLoading(false)
     actions.app.setError(false)
   }  
-
+  
   return (
     <div className="col">
         <div className="blog-logo">

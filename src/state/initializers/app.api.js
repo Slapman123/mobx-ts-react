@@ -29,6 +29,22 @@ export const initAppAPI = (state) => {
         }),
         setUtils: action('setUtils',(data)=>{
             state.app.utils = data
+        }),
+        resetUserData: action('resetUserData',()=>{
+            state.app.formA = {
+                username: null,
+                mail: null,
+                src: null,
+                token: null,
+            }
+        }),
+        setUserData: action('setUserData',(name,mail,src,token)=>{
+            state.app.formA = {
+                username: name,
+                mail: mail,
+                src: src,
+                token: token,
+            }
         })
     }
 }

@@ -9,7 +9,7 @@ const  NewsCard = ({data,helpers})=>{
             <div className="new-card-info">
                 <h2>{data.title}</h2>
                 <p>{data.content.slice(0,250)}...</p>
-                <Link to={`/radionice/${data.id}`} className="btn">{helpers.app.utils.button_3}</Link>
+                <Link to={`/workshops/${data.id}`} className="btn">{helpers.app.utils.button_3}</Link>
             </div>
         </div> 
     )
