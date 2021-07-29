@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
 import back from "../../assets/images/undraw_collaborators_prrw.svg";
-import NewsCard from "../../components/NewsCard/NewsCard";
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 import useFetch from "../../utils/useFetch";
 import Anounc from "../../components/Anounc/Anounc";
+import NewsList from "../../components/NewsList/NewsList";
 
 
 const News = ({actions,helpers}) => {
-  const {loading, error, data} = useFetch(`http://localhost:1337/f-inishedpros?_locale=${helpers.app.localization}&_start=0&_limit=5`);
-  const [page,setPage] = useState(data)
+  const {loading, error, data} = useFetch(`http://localhost:1337/f-inishedpros?_locale=${helpers.app.localization}&_start=0&_limit=10`);
+
   if(loading){
     actions.app.setLoading(loading)
   };
@@ -22,11 +21,6 @@ const News = ({actions,helpers}) => {
     actions.app.setLoading(false)
     actions.app.setError(false)
   }
-  const getMoreData = async () =>{
-    const res = await fetch(`http://localhost:1337/f-inishedpros?_locale=${helpers.app.localization}&_start=${page.length}&_limit=5`);
-    const newPosts = await res.json()
-    setPage(page=>[...page, ...newPosts])
-  }
   
   return (
     <div className="container">
@@ -34,17 +28,8 @@ const News = ({actions,helpers}) => {
         <div className="news-list-holder">
             <div className="news-background"><h1>{helpers.app.utils.RadioniceTitle}</h1><img src={back}/></div>
             <Anounc/>
-            <InfiniteScroll 
-              dataLength={data.length} 
-              next={getMoreData}  
-              hasMore={true}>
-              {
-                page.map((news,i)=>{
-                  return <NewsCard data={news} key={i}/>
-                })
-              }
-            </InfiniteScroll>
         </div>
+        <NewsList data={data}/>
       </div>
     </div>
   );
