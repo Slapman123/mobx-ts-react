@@ -5,7 +5,7 @@
     justify-content: center;
     padding: 40px 0;
     flex-direction: column;
-    padding-bottom: 150px;
+    padding-bottom: 50px;
     .new-profile-info{
         width: 100%;
         flex-direction: column;
@@ -18,20 +18,5 @@
         p{
             margin-bottom: 8px;
         }
-    }
-}
-.new-image-holder  {
-    margin-bottom: 80px;
-    display: flex;
-    width: 100%;
-    max-height: 300px;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    overflow-y: hidden;
-    overflow-x: auto;
-    .slide{
-        padding: 20px;
-        height: 100%;
     }
 }

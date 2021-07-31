@@ -26,8 +26,8 @@ const Nav = ({actions,helpers})=>{
                         <input type="search"/>
                         <img src={search}/>
                     </div>
-                    <a href="#"><img src={instagram}/></a>
-                    <a href="#"><img src={facebook}/></a>
+                    <a href={helpers.app.utils.instagramLink}><img src={instagram}/></a>
+                    <a href={helpers.app.utils.facebookLink}><img src={facebook}/></a>
                 </div>
                 <ul>
                     <NavLink activeClassName='active-link' to="/home">{helpers.app.utils.Home}</NavLink>

@@ -24,9 +24,10 @@ import Error from "../components/Error/Error";
 import MobileMenu from "../components/MobileMenu/MobileMenu";
 import axios from "axios";
 import UserProfile from "../components/UserProfile/UserProfile";
+
 function App({actions,helpers}) {
   useEffect(()=>{
-    axios.get(`http://localhost:1337/home-page?_locale=${helpers.app.localization}`).then((data)=>{
+    axios.get(`${process.env.REACT_APP_URL}/home-page?_locale=${helpers.app.localization}`).then((data)=>{
       actions.app.setUtils(data.data);
       console.log(data.data)
     })
@@ -42,16 +43,16 @@ function App({actions,helpers}) {
           <Route exact path="/" component={Home} />
           <Route path="/home" component={Home} />
           <Route path="/workshops/:id" component={NewsProfile}/>
-          <Route path="/workshops" component={News}/>
+          <Route exact path="/workshops" component={News}/>
           <Route path="/upcoming" component={Upcoming}/>
-          <Route path="/blog/:id" component={BlogProfile}/>
+          <Route exact path="/blog/:id" component={BlogProfile}/>
           <Route path="/registration" component={LoginSing}/>
           <Route path="/blog" component={Blogs}/>
-          <Route path="/service/:id" component={ServiceProfile}/>
+          <Route exact path="/service/:id" component={ServiceProfile}/>
           <Route path="/service" component={Service} />
           <Route path="/contact" component={Contact}/>
           <Route path="/who we are" component={WhoWeAre}/>
-          <Route path="/team/:id" component={TeamProfile}/>
+          <Route exact path="/team/:id" component={TeamProfile}/>
           <Route path="/profile" component={UserProfile}/>
           <Route path="*" component={Page404}/>
         </Switch>

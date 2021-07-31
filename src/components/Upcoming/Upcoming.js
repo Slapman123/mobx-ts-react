@@ -8,7 +8,7 @@ import useFetch from '../../utils/useFetch';
 import cover from "../../assets/images/undraw_Meeting_re_i53h.svg";
 
 const  Upcoming = ({actions,helpers})=>{
-    const {loading, error, data} = useFetch("http://localhost:1337/promotions?_locale="+helpers.app.localization);
+    const {loading, error, data} = useFetch(`${process.env.REACT_APP_URL}/promotions?_locale=${helpers.app.localization}`);
     if(loading){
         actions.app.setLoading(loading)
       };

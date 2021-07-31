@@ -8,7 +8,7 @@ import "react-multi-carousel/lib/styles.css";
 import Errors from "../Error/Error";
 
 const  Reference = ({actions})=>{
-    const {loading, error, data} = useFetch("http://localhost:1337/references");
+    const {loading, error, data} = useFetch("${process.env.REACT_APP_URL}/references");
 
     if(loading){
       actions.app.setLoading(loading)
@@ -52,7 +52,7 @@ const  Reference = ({actions})=>{
                     responsive={responsive}>
                         {
                           data.map((logo,i)=>{
-                            return <div className="slide" key={i}><img src={`http://localhost:1337${logo.logo.url}`}/></div>
+                            return <div className="slide" key={i}><img src={`${process.env.REACT_APP_URL}${logo.logo.url}`}/></div>
                           })
                         }
                 </Carousel>

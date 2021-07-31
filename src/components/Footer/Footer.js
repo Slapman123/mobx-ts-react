@@ -14,8 +14,8 @@ const Footer = ({helpers})=>{
                 <div className="social-holder">
                 <img id="logo" src={logo}/>
                 <div className="social-btns">
-                    <a href="#"><img src={instagram}/></a>
-                    <a href="#"><img src={facebook}/></a>
+                    <a href={helpers.app.utils.instagramLink}><img src={instagram}/></a>
+                    <a href={helpers.app.utils.facebookLink}><img src={facebook}/></a>
                 </div>
             </div>
                 <ul className="addresses">
@@ -30,8 +30,8 @@ const Footer = ({helpers})=>{
                     }
                 </ul>
                 <ul className="contact-info">
-                    <li>{helpers.app.utils.tel} : <a href="tel:00631455668">+381 63 14 55 668</a></li>
-                    <li>{helpers.app.utils.mailf} : <a href="mailto:office@hrfactor.rs">office@hrfactor.rs</a></li>
+                    <li>{helpers.app.utils.tel} : <a href="tel:00631455668">{helpers.app.utils.NumberOfCompany}</a></li>
+                    <li>{helpers.app.utils.mailf} : <a href="mailto:office@hrfactor.rs">{helpers.app.utils.emailOfCompany}</a></li>
                 </ul>
                 <div className="who-we-are">
                     <Link to="/who we are">{helpers.app.utils.footer_title}</Link>

@@ -13,6 +13,7 @@
         width: 50%;
         @media (max-width: $small){
             width: 100%;
+            margin-bottom: 40px;
         }
         position: relative;
         img{
@@ -27,6 +28,8 @@
             z-index: 1;
             @media (max-width: $small){
                 height: 100px;
+                right: 0;
+                bottom: -10%;
             }
         }
     }

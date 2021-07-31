@@ -7,13 +7,13 @@ import ReactMarkdown from "react-markdown"
 
 const  ServiceProfile = ({actions,helpers})=>{
     const {id} = useParams();
-    const {loading, error, data} = useFetch(`http://localhost:1337/services/${id}?_locale=${helpers.app.localization}`);
+    const {loading, error, data} = useFetch(`${process.env.REACT_APP_URL}/services/${id}?_locale=${helpers.app.localization}`);
 
     if(loading){
         actions.app.setLoading(loading)
       };
       if(error){
-        actions.app.setError(error)
+        actions.app.setError(true)
       }
       if(data) {
         actions.app.setLoading(false)

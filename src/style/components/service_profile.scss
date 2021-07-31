@@ -12,12 +12,14 @@ article{
         display: flex;
         padding: 40px;
         margin: 60px 0 150px 0;
+        border-top-right-radius: 10%;
+        border-bottom-left-radius: 10%;
         @media (max-width: $small){
             width: 100%;
             margin-bottom: 60px;
             padding: 40px 20px;
         }
-        h1{
+        h1,h2,h3,h4,h5,h6{
             margin-bottom: 12px;
             color: $primary;
         }
@@ -30,6 +32,26 @@ article{
         }
         p{
             margin-bottom: 16px;
+            line-height: 20px;
+            width: 100%;
+            text-align: left;
+        }
+        ul{
+            list-style-type: none;
+            padding-left: 25px;
+            margin: 16px 0;
+            li{
+                margin-bottom: 8px;
+            }
+            li::before{
+                content: "\2022";
+                color: $primary;
+                font-weight: bold;
+                display: inline-block;
+                font-size: 15px; 
+                width: 1em;
+                margin-left: -1em;
+            }
         }
     }
 }

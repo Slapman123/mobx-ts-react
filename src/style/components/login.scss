@@ -4,12 +4,18 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    @media (max-width: $small){
+        flex-direction: column;
+    }
     img{
         width: 50%;
     }
     .log-sing{
         width: 40%;
         padding: 40px;
+        @media (max-width: $small){
+            width: 100%;
+        }
         .login,.sing{
             display: none;
             align-items: flex-start;

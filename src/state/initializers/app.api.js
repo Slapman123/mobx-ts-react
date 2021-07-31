@@ -18,8 +18,9 @@ export const initAppAPI = (state) => {
         setLoading: action("setLoading",(data)=>{
             state.app.loading = data
         }),
-        setError: action("setError",(data)=>{
-            state.app.eroor = data
+        setError: action("setError",(data,er)=>{
+            state.app.error = data
+            state.app.errormessage = er
         }),
         setMobileMenu: action("setMobileMenu",(data)=>{
             state.app.mobilemenu = data

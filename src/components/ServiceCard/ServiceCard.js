@@ -8,7 +8,7 @@ const ServiceCard = ({poda,helpers})=>{
     return(
         <div className="service-card">
             <div className="image-wrapper">
-                <img src={`http://localhost:1337${poda.Cover.url}`}/>
+                <img src={`${process.env.REACT_APP_URL}${poda.Cover.url}`}/>
             </div>
             <div className="service-info">
                 <h2>{poda.title}</h2>

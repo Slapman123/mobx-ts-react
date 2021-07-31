@@ -9,7 +9,7 @@ import log from "../../assets/icon/logout.svg";
 
 const  UserProfile = ({actions,helpers})=>{
     const goTo = useHistory();
-    const {loading, error, data} = useFetch("http://localhost:1337/promotions?_locale="+helpers.app.localization);
+    const {loading, error, data} = useFetch("${process.env.REACT_APP_URL}/promotions?_locale="+helpers.app.localization);
     if(loading){
         actions.app.setLoading(loading)
       };
@@ -26,7 +26,7 @@ const  UserProfile = ({actions,helpers})=>{
                <div className='prodile-wrapper'>
                     <div className="user-card">
                         <div className='profile-img'>
-                            <img src={`http://localhost:1337${helpers.app.formA.src}`}/>
+                            <img src={`${process.env.REACT_APP_URL}${helpers.app.formA.src}`}/>
                         </div>
                         <div className='user-info'>
                             <div className="user-info-list">

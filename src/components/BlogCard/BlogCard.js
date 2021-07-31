@@ -7,7 +7,7 @@ const  BlogCard = ({data,helpers})=>{
     return(
         <div className="blog-card">
             <div className="image-wrapper">
-                <img src={`http://localhost:1337${data.cover[0].url}`}/>
+                <img src={`${process.env.REACT_APP_URL}${data.cover[0].url}`}/>
                 {
                     data.isnew?<div className="date"><p>{helpers.app.utils.NovoMark}</p></div>:''
                 }

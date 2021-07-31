@@ -10,7 +10,7 @@ import TeamCard from "../../components/TeamCard/TeamCard";
 import useFetch from "../../utils/useFetch";
 
 const WhoWeAre = ({actions,helpers}) => {
-  const {loading, error, data} = useFetch("http://localhost:1337/who-we-ares?_locale="+helpers.app.localization);
+  const {loading, error, data} = useFetch(`${process.env.REACT_APP_URL}/who-we-ares?_locale=${helpers.app.localization}`);
   const [isFetched,setFetched] = useState(false)
   
   useEffect(()=>{

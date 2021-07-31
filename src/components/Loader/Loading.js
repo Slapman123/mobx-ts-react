@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
 import loading from "../../assets/images/loading.gif";

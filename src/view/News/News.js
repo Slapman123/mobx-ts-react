@@ -9,7 +9,7 @@ import NewsList from "../../components/NewsList/NewsList";
 
 
 const News = ({actions,helpers}) => {
-  const {loading, error, data} = useFetch(`http://localhost:1337/f-inishedpros?_locale=${helpers.app.localization}&_start=0&_limit=10`);
+  const {loading, error, data} = useFetch(`${process.env.REACT_APP_URL}/f-inishedpros?_locale=${helpers.app.localization}&_start=0&_limit=10`);
 
   if(loading){
     actions.app.setLoading(loading)

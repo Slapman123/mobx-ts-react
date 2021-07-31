@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
 import img  from "../../assets/images/undraw_page_not_found_su7k.svg";
 
-const News = () => {
+const Page404 = () => {
 
   return (
     <div className="col">
@@ -14,8 +14,8 @@ const News = () => {
   );
 };
 
-News.prototype = {
+Page404.prototype = {
   state: PropTypes.object,
 };
 
-export default setup(News);
+export default setup(Page404);

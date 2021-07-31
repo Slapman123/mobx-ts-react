@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
@@ -7,12 +7,19 @@ import axios from "axios";
 
 const LoginSing = ({actions}) => {
   const [selected, setSelected] = useState(0)
-  const [emailL, setEmailL] = useState()
-  const [passL, setPassL] = useState()
-  const [userS, setUserS] = useState()
-  const [mailS, setMailS] = useState()
-  const [passS, setPassS] = useState()
+  const [emailL, setEmailL] = useState("")
+  const [passL, setPassL] = useState("")
+  const [userS, setUserS] = useState("")
+  const [mailS, setMailS] = useState("")
+  const [passS, setPassS] = useState("")
   const goTo = useHistory();
+  useEffect(()=>{
+    clearInterval()
+    setInterval(()=>{
+      actions.app.setError(false,"")
+    },5000)
+  },[])
+  
   //toggle
   const onLogin = () => {
     setSelected(1)
@@ -24,7 +31,7 @@ const LoginSing = ({actions}) => {
   const onLoginS =(e)=>{
     e.preventDefault()
     actions.app.setLoading(true)
-    axios.post('http://localhost:1337/auth/local',{
+    axios.post(`${process.env.REACT_APP_URL}/auth/local`,{
       identifier: emailL,
       password: passL
     }).then((data)=>{
@@ -36,15 +43,17 @@ const LoginSing = ({actions}) => {
       actions.app.setLoading(false)
       actions.app.setUserData(user.user.username,user.user.email,user.user.profile.url,user.jwt)
       goTo.push('/');
-      console.log(data)
     }).catch(e=>{
-      console.log(e)
+      setEmailL("")
+      setPassL("")
+      actions.app.setLoading(false);
+      actions.app.setError(true,"Password or Username is not correct");
     })
   }
   const onSingS =(e)=>{
     e.preventDefault()
     actions.app.setLoading(true)
-    axios.post('http://localhost:1337/auth/local/register',{
+    axios.post(`${process.env.REACT_APP_URL}/auth/local/register`,{
       username: userS,
       email: mailS,
       password: passS,
@@ -56,7 +65,11 @@ const LoginSing = ({actions}) => {
       actions.app.setUserData(data.data.user.username,data.data.jwt)
       goTo.push('/');
     }).catch(e=>{
-      console.log(e)
+      setUserS("")
+      setPassS("")
+      setMailS("")
+      actions.app.setLoading(false);
+      actions.app.setError(true,"Server is down");
     })
   }
   return (
@@ -64,16 +77,16 @@ const LoginSing = ({actions}) => {
         <div className="log-wrapper">
         <img src={loggs}/>
         <div className="log-sing">
-            <form className={`login ${selected===0 ? "active" : ""}`} onSubmit={onLoginS}>
-                <label>Mail<input type="text" placeholder="Mail" onChange={(e)=>setEmailL(e.target.value)} required/></label>
-                <label>Password<input type="password" placeholder="Password" onChange={(e)=>setPassL(e.target.value)} required/></label>
+            <form className={`login ${selected===0 ? "active" : ""}`} onSubmit={onLoginS} >
+                <label>Mail<input type="text" value={emailL} placeholder="Mail" onChange={(e)=>setEmailL(e.target.value)} required autoComplete={"true"}/></label>
+                <label>Password<input type="password" value={passL} placeholder="Password" onChange={(e)=>setPassL(e.target.value)} autoComplete={"true"} required/></label>
                 <button className="btn-submit" type="submit">Log In</button>
                 <button className="btn-link" type="button" onClick={onLogin}>Need a new account</button>
             </form>
             <form className={`sing ${selected===1 ? "active" : ""}`} onSubmit={onSingS}>
-                <label>Username<input type="text" placeholder="Username" onChange={(e)=>setUserS(e.target.value)} required/></label>
-                <label>Mail<input type="email" placeholder="Mail"onChange={(e)=>setMailS(e.target.value)} required/></label>
-                <label>Password<input type="password" placeholder="Password" onChange={(e)=>setPassS(e.target.value)} required/></label>
+                <label>Username<input value={userS} type="text" placeholder="Username" onChange={(e)=>setUserS(e.target.value)} required/></label>
+                <label>Mail<input value={mailS} type="email" placeholder="Mail"onChange={(e)=>setMailS(e.target.value)} required/></label>
+                <label>Password<input value={passS} type="password" placeholder="Password" onChange={(e)=>setPassS(e.target.value)} required/></label>
                 <button className="btn-submit" type="submit">Sing In</button>
                 <button className="btn-link" type="button" onClick={onSign}>Have account</button>
             </form>

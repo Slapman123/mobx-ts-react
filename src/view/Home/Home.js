@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import { setup } from "../../utils/setup";
@@ -7,6 +7,7 @@ import FeatureCollections from "../../components/Feture_collections/FeatureColle
 import Reference from "../../components/Reference/Reference";
 
 const Home = ({helpers}) => {
+  
   return (
     <div className="">
       <div className='col'>

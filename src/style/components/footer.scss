@@ -45,12 +45,16 @@ footer{
             display: flex;
             justify-content: center;
             flex-direction: column;
+            margin-top: 40px;
         };
         li{
             white-space: nowrap;
         }
         li:nth-child(1){
             margin-bottom: 16px;
+            @media (max-width: $small){
+                margin-bottom: 10px;
+            }
         }
         li:nth-child(n+2){
             padding-top: 10px;

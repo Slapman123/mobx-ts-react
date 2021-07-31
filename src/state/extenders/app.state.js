@@ -10,6 +10,7 @@ export const initAppState = (state) => {
             scrollData: 0,
             loading: false,
             error: false,
+            errormessage: "",
             mobilemenu: false,
             localization: "sr-Latn",
             utils:[],
@@ -49,6 +50,9 @@ export const initAppState = (state) => {
             },
             get formA(){
                 return state.app.formA;
+            },
+            get errormessage(){
+                return state.app.errormessage;
             }
         }
     })

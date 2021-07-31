@@ -8,7 +8,7 @@ const  TeamCard = ({team,helpers})=>{
         <div className="team-holder">
             <div className="team-profile">
                 <div className="image-wrapper">
-                <img src={`http://localhost:1337${team.TeamImage[0].url}`}/>
+                <img src={`${process.env.REACT_APP_URL}${team.TeamImage[0].url}`}/>
             </div>
                 <strong>{team.Name}</strong>
                 <p>{team.NameInfo}</p>

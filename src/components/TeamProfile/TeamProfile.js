@@ -9,7 +9,7 @@ import useFetch from '../../utils/useFetch';
 
 const  TeamCard = ({actions,helpers})=>{
     const {id} = useParams();
-    const {loading, error, data} = useFetch(`http://localhost:1337/who-we-ares/${id}?_locale=${helpers.app.localization}`);
+    const {loading, error, data} = useFetch(`${process.env.REACT_APP_URL}/who-we-ares/${id}?_locale=${helpers.app.localization}`);
 
     if(loading){
         actions.app.setLoading(loading)
@@ -30,7 +30,7 @@ const  TeamCard = ({actions,helpers})=>{
         <div className='col'>
         <div className="meet-profile">
             <div className="image-wrapper">
-                <img src={`http://localhost:1337${imageUrl}`}/>
+                <img src={`${process.env.REACT_APP_URL}${imageUrl}`}/>
                 <img id="banner" src={banner}/>
             </div>
             <div className="meet-me">

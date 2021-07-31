@@ -4,18 +4,17 @@ import {useParams} from "react-router-dom";
 import { setup } from "../../utils/setup";
 import useFetch from "../../utils/useFetch";
 import ReactMarkdown from "react-markdown";
-import axios from 'axios';
 
 const  BlogProfile = ({actions,helpers})=>{
     const {id} = useParams();
     let imageUrl = "";
-    const {loading, error, data} =  useFetch(`http://localhost:1337/blogs/${id}?_locale=${helpers.app.localization}`);
+    const {loading, error, data} =  useFetch(`${process.env.REACT_APP_URL}/blogs/${id}?_locale=${helpers.app.localization}`);
 
     if(loading){
         actions.app.setLoading(loading)
       };
     if(error){
-        actions.app.setError(error)
+        actions.app.setError(false)
       }
     if(data) {
         actions.app.setLoading(false)
@@ -31,7 +30,7 @@ const  BlogProfile = ({actions,helpers})=>{
         <div className="col">
             <div className="profile">
                 <div className="profile-img">
-                    <img src={`http://localhost:1337${imageUrl}`}/>
+                    <img src={`${process.env.REACT_APP_URL}${imageUrl}`}/>
                     <h2>{data.Title}</h2>
                 </div>
                 <div className="date-author">

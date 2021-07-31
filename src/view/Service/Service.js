@@ -9,7 +9,7 @@ import useFetch from "../../utils/useFetch";
 
 const Service = ({actions,helpers}) => {
   
-  const {loading, error, data} = useFetch("http://localhost:1337/services?_locale="+helpers.app.localization);
+  const {loading, error, data} = useFetch(`${process.env.REACT_APP_URL}/services?_locale=${helpers.app.localization}`);
 
   if(loading){
     actions.app.setLoading(loading)
